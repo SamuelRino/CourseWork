@@ -1,0 +1,99 @@
+﻿<Window x:Class="CourseWork.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CourseWork"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" WindowState="Maximized">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="7*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Background="DarkGray" Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+          
+            <Expander HorizontalAlignment="Stretch" FlowDirection="RightToLeft" Margin="5">
+                <Expander.Header>
+                    <Grid Width="150">
+                        <TextBlock Text="Администрирование" HorizontalAlignment="Right"/>
+                    </Grid>
+                </Expander.Header>
+                <StackPanel>
+                    <Button Content="Торговые автоматы" Margin="5"/>
+                    <Button Content="Наполнение автомата" Margin="5"/>
+                    <Button Content="Продукты" Margin="5"/>
+                    <Button Content="Сотрудники" Margin="5"/>
+                    <Button Content="Локации" Margin="5"/>
+                </StackPanel>
+            </Expander>
+            
+            <Expander Grid.Row="1" HorizontalAlignment="Stretch" FlowDirection="RightToLeft" Margin="5">
+                <Expander.Header>
+                    <Grid Width="150">
+                        <TextBlock Text="Cправочники" HorizontalAlignment="Right"/>
+                    </Grid>
+                </Expander.Header>
+                <StackPanel>
+                    <Button Content="Статусы автоматов" Margin="5"/>
+                    <Button Content="Категории продуктов" Margin="5"/>
+                    <Button Content="Методы оплаты" Margin="5"/>
+                    <Button Content="Роли сотрудников" Margin="5"/>
+                </StackPanel>
+            </Expander>
+
+            <Expander Grid.Row="2" HorizontalAlignment="Stretch" FlowDirection="RightToLeft" Margin="5">
+                <Expander.Header>
+                    <Grid Width="150">
+                        <TextBlock Text="Операции" HorizontalAlignment="Right"/>
+                    </Grid>
+                </Expander.Header>
+                <StackPanel>
+                    <Button Content="Продажи" Margin="5"/>
+                    <Button Content="Обслуживание" Margin="5"/>
+                    <Button Content="Пополнения" Margin="5"/>
+                </StackPanel>
+            </Expander>
+
+            <Expander Grid.Row="3" HorizontalAlignment="Stretch" FlowDirection="RightToLeft" Margin="5">
+                <Expander.Header>
+                    <Grid Width="150">
+                        <TextBlock Text="Отчёты" HorizontalAlignment="Right"/>
+                    </Grid>
+                </Expander.Header>
+                <StackPanel>
+                    <Button Content="Активность сотрудников" Margin="5"/>
+                    <Button Content="Низкая наполненность" Margin="5"/>
+                    <Button Content="Выручка по локациям" Margin="5"/>
+                    <Button Content="Продажи по автоматам" Margin="5"/>
+                    <Button Content="Наполнение по автоматам" Margin="5"/>
+                </StackPanel>
+            </Expander>
+        </Grid>
+
+
+        <Grid Grid.ColumnSpan="2" Background="Black">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Label Foreground="White" FontSize="20">ООО Торговые автоматы</Label>
+
+            <Frame Grid.Row="1" x:Name="fMainFrame" Background="White" NavigationUIVisibility="Hidden">
+
+            </Frame>
+        </Grid>
+    </Grid>
+</Window>
