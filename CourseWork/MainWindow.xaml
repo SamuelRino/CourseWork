@@ -31,7 +31,7 @@
                     </Grid>
                 </Expander.Header>
                 <StackPanel>
-                    <Button Content="Торговые автоматы" Margin="5"/>
+                    <Button x:Name="btnToMachines" Content="Торговые автоматы" Margin="5" Click="btnToMachines_Click"/>
                     <Button Content="Наполнение автомата" Margin="5"/>
                     <Button Content="Продукты" Margin="5"/>
                     <Button Content="Сотрудники" Margin="5"/>
@@ -91,7 +91,7 @@
 
             <Label Foreground="White" FontSize="20">ООО Торговые автоматы</Label>
 
-            <Frame Grid.Row="1" x:Name="fMainFrame" Background="White" NavigationUIVisibility="Hidden">
+            <Frame Grid.Row="1" x:Name="fMainFrame" NavigationUIVisibility="Hidden">
 
             </Frame>
         </Grid>

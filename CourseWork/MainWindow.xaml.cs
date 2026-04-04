@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using CourseWork.Pages;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -16,9 +17,16 @@ namespace CourseWork
     /// </summary>
     public partial class MainWindow : Window
     {
+        private readonly MachinesPage machinesPage = new();
         public MainWindow()
         {
             InitializeComponent();
+            fMainFrame.Navigate(machinesPage);
+        }
+
+        private void btnToMachines_Click(object sender, RoutedEventArgs e)
+        {
+            fMainFrame.Navigate(machinesPage);
         }
     }
 }
