@@ -19,7 +19,7 @@
             <TextBlock Text="Торговые автоматы" FontSize="24" FontWeight="Bold"/>
             <Button x:Name="btnAdd" Content="Добавить" Margin="20,0,0,0" Width="100" Click="btnAdd_Click"/>
             <Label Margin="20,0,0,0">Показ удалённых автоматов</Label>
-            <CheckBox x:Name="cbShowDeleted" VerticalAlignment="Center" IsChecked="False" Checked="cbShowDeleted_Checked"/>
+            <CheckBox x:Name="cbShowDeleted" VerticalAlignment="Center" IsChecked="False" Checked="cbShowDeleted_Checked" Unchecked="cbShowDeleted_Unchecked"/>
         </StackPanel>
 
         <ListView x:Name="lvMachines" Grid.Row="1">
@@ -62,7 +62,7 @@
                                             <Setter Property="Padding" Value="3"/>
                                         </Style>
                                     </StackPanel.Resources>
-                                    <Button>
+                                    <Button x:Name="btnEdit" Click="btnEdit_Click">
                                         <materialDesign:PackIcon Kind="Edit" VerticalAlignment="Center"/>
                                     </Button>
                                     <Button Click="btnRestock_Click">
@@ -76,10 +76,9 @@
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn Header="Удалён" Width="50">
-
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <CheckBox IsChecked="{Binding IsDeleted}"/>
+                                <CheckBox IsChecked="{Binding IsDeleted}" IsEnabled="False"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>

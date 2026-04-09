@@ -1,4 +1,5 @@
-﻿using CourseWork.Models;
+﻿using CourseWork.Classes;
+using CourseWork.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -18,17 +19,13 @@ using System.Windows.Shapes;
 
 namespace CourseWork.Pages
 {
-    public static class DeletedVisibility
-    {
-        public static bool IsVisible { get; set; }
-    }
     public partial class MachinesPage : Page
     {
+        bool deletedVisibilty = false;
         public MachinesPage()
         {
             InitializeComponent();
             RefreshData();
-
         }
 
         private void RefreshData()
@@ -37,9 +34,13 @@ namespace CourseWork.Pages
             {
                 var machines = db.VendingMachines
                                  .Include(m => m.Location)
-                                 .Include(m => m.Status)
-                                 .Where(m => m.IsDeleted == false)
+                                 .Include(m => m.Status)                              
                                  .ToList();
+
+                if (deletedVisibilty == false)
+                {
+                    machines = machines.Where(m => m.IsDeleted == false).ToList();
+                }
 
                 lvMachines.ItemsSource = machines;
             }
@@ -85,12 +86,37 @@ namespace CourseWork.Pages
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            // Здесь будет открытие окна добавления автомата (как AddEditMachine в примере)
+            DataMachine.machine = null;
+
+            AddEditMachineWindow w = new();
+            w.ShowDialog();
+
+            RefreshData();
+        }
+
+        private void btnEdit_Click(object sender, RoutedEventArgs e)
+        {
+            Button btn = (Button)sender;
+            var machine = btn.DataContext as VendingMachine;
+
+            DataMachine.machine = machine;
+
+            AddEditMachineWindow w = new();
+            w.ShowDialog();
+
+            RefreshData();
         }
 
         private void cbShowDeleted_Checked(object sender, RoutedEventArgs e)
         {
-
+            deletedVisibilty = true;
+            RefreshData();
         }
+
+        private void cbShowDeleted_Unchecked(object sender, RoutedEventArgs e)
+        {
+            deletedVisibilty = false;
+            RefreshData();
+        }      
     }
 }

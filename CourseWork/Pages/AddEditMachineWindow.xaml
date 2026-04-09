@@ -1,0 +1,63 @@
+﻿<Window x:Class="CourseWork.Pages.AddEditMachineWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CourseWork.Pages"
+        mc:Ignorable="d"
+            Title="" Height="350" Width="500" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock x:Name="tbTitle" Text="Создание торгового автомата" VerticalAlignment="Center" FontSize="20" Grid.ColumnSpan="2" Foreground="DodgerBlue" Margin="10"/>
+
+        <StackPanel Grid.Row="1" Margin="5">
+            <Label Content="Серийный номер *"/>
+            <TextBox x:Name="tbName" Height="30" Text="{Binding SerialNumber}"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Grid.Column="1" Margin="5">
+            <Label Content="Модель ТА *"/>
+            <TextBox x:Name="tbModel" Height="30" Text="{Binding Model}"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Grid.Column="0" Margin="5">
+            <Label Content="Локация *"/>
+            <ComboBox x:Name="cbLocation" Height="30" SelectedItem="{Binding Path=Location}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock>
+                            <Run Text="{Binding Address}"/>
+                            <Run Text=", "/>
+                            <Run Text="{Binding BuildingName}"/>
+                            <Run Text="{Binding Floor, StringFormat=' (этаж {0})'}"/>
+                        </TextBlock>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Grid.Column="1" Margin="5">
+            <Label Content="Статус *"/>
+            <ComboBox x:Name="cbStatus" Height="30" SelectedItem="{Binding Path=Status}"/>
+        </StackPanel>
+
+        <Button x:Name="btnRestore" Grid.Row="3" Grid.ColumnSpan="2" Margin="50,15" Content="Восстановить" Visibility="Collapsed" Click="btnRestore_Click"/>
+
+        <StackPanel Grid.Row="4" Orientation="Horizontal" Margin="10">
+            <Button x:Name="btnSave" Foreground="White" Background="DodgerBlue" Content="Создать" VerticalAlignment="Center" Padding="5" Click="btnSave_Click" />
+            <Button x:Name="btnCancel" Content="Отменить" VerticalAlignment="Center" Padding="5" Margin="10,0,0,0" Click="btnCancel_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
