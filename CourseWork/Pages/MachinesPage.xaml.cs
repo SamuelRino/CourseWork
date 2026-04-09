@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,15 +18,17 @@ using System.Windows.Shapes;
 
 namespace CourseWork.Pages
 {
-    /// <summary>
-    /// Логика взаимодействия для MachinesPage.xaml
-    /// </summary>
+    public static class DeletedVisibility
+    {
+        public static bool IsVisible { get; set; }
+    }
     public partial class MachinesPage : Page
     {
         public MachinesPage()
         {
             InitializeComponent();
             RefreshData();
+
         }
 
         private void RefreshData()
@@ -44,7 +47,7 @@ namespace CourseWork.Pages
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show("Удалить автомат?", "Подтверждение", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            if (MessageBox.Show("Удалить автомат?", "Подтверждение", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
             {
                 var button = sender as Button;
                 var machine = button.DataContext as VendingMachine;
@@ -83,6 +86,11 @@ namespace CourseWork.Pages
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
             // Здесь будет открытие окна добавления автомата (как AddEditMachine в примере)
+        }
+
+        private void cbShowDeleted_Checked(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
