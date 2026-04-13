@@ -109,12 +109,14 @@ namespace CourseWork.Pages
 
         private void cbShowDeleted_Checked(object sender, RoutedEventArgs e)
         {
+            cIsDeleted.Width = 50;
             deletedVisibilty = true;
             RefreshData();
         }
 
         private void cbShowDeleted_Unchecked(object sender, RoutedEventArgs e)
         {
+            cIsDeleted.Width = 0;
             deletedVisibilty = false;
             RefreshData();
         }      

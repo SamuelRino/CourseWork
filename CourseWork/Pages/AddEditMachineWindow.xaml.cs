@@ -38,8 +38,8 @@ namespace CourseWork.Pages
                 var machines = _db.VendingMachines
                     .Include(m => m.Location)
                     .Include(m => m.Status);
-                _machine = machines.FirstOrDefault(m => m.StatusId == DataMachine.machine.MachineId);
-                //if (_machine.IsDeleted == true) btnRestore.Visibility = Visibility.Visible;
+                _machine = machines.FirstOrDefault(m => m.MachineId == DataMachine.machine.MachineId);
+                if (_machine.IsDeleted == true) btnRestore.Visibility = Visibility.Visible;
                 tbTitle.Text = "Изменение торгового автомата";
                 btnSave.Content = "Сохранить";
             }
@@ -55,7 +55,13 @@ namespace CourseWork.Pages
 
         private void btnRestore_Click(object sender, RoutedEventArgs e)
         {
-
+            if (_machine != null && _machine.IsDeleted)
+            {
+                _machine.IsDeleted = false;
+                _db.SaveChanges();
+                MessageBox.Show("Автомат восстановлен.", "Восстановление", MessageBoxButton.OK, MessageBoxImage.Information);
+                this.Close();
+            }
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)

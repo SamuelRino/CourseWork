@@ -75,7 +75,7 @@
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="Удалён" Width="50">
+                    <GridViewColumn x:Name="cIsDeleted" Header="Удалён" Width="0">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <CheckBox IsChecked="{Binding IsDeleted}" IsEnabled="False"/>
