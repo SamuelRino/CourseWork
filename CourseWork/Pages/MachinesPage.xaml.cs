@@ -1,5 +1,6 @@
 ﻿using CourseWork.Classes;
 using CourseWork.Models;
+using CourseWork.Pages.DialogWindows;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -70,18 +71,11 @@ namespace CourseWork.Pages
         {
             var button = sender as Button;
             var machine = button.DataContext as VendingMachine;
-            int employeeId = 2; // Петров П.П.
-            int productId = 1;  // Эспрессо
-            int quantityToAdd = 50;
 
-            using (var db = new VendingDbContext())
-            {
-                db.Database.ExecuteSqlRaw(
-                    "EXEC sp_RestockMachine @p0, @p1, @p2, @p3",
-                    employeeId, machine.MachineId, productId, quantityToAdd);
-            }
+            DataMachine.machine = machine;
 
-            MessageBox.Show("Автомат успешно пополнен!");
+            RestockMachineWindow w = new();
+            w.ShowDialog();
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)

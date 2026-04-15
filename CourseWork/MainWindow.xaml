@@ -46,9 +46,7 @@
                     </Grid>
                 </Expander.Header>
                 <StackPanel>
-                    <Button Content="Статусы автоматов" Margin="5"/>
                     <Button Content="Категории продуктов" Margin="5"/>
-                    <Button Content="Методы оплаты" Margin="5"/>
                     <Button Content="Роли сотрудников" Margin="5"/>
                 </StackPanel>
             </Expander>
