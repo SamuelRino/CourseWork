@@ -18,6 +18,7 @@ namespace CourseWork
     public partial class MainWindow : Window
     {
         private readonly MachinesPage machinesPage = new();
+        private readonly MachineStockPage machineStockPage = new();
         public MainWindow()
         {
             InitializeComponent();
@@ -27,6 +28,11 @@ namespace CourseWork
         private void btnToMachines_Click(object sender, RoutedEventArgs e)
         {
             fMainFrame.Navigate(machinesPage);
+        }
+
+        private void btnToMachineStosk_Click(object sender, RoutedEventArgs e)
+        {
+            fMainFrame.Navigate(machineStockPage);
         }
     }
 }

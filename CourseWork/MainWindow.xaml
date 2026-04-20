@@ -32,7 +32,7 @@
                 </Expander.Header>
                 <StackPanel>
                     <Button x:Name="btnToMachines" Content="Торговые автоматы" Margin="5" Click="btnToMachines_Click"/>
-                    <Button Content="Наполнение автомата" Margin="5"/>
+                    <Button x:Name="btnToMachineStosk" Content="Наполнение автомата" Margin="5" Click="btnToMachineStosk_Click"/>
                     <Button Content="Продукты" Margin="5"/>
                     <Button Content="Сотрудники" Margin="5"/>
                     <Button Content="Локации" Margin="5"/>

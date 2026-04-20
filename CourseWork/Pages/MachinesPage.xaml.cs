@@ -31,9 +31,9 @@ namespace CourseWork.Pages
 
         private void RefreshData()
         {
-            using (var db = new VendingDbContext())
+            using (var _db = new VendingDbContext())
             {
-                var machines = db.VendingMachines
+                var machines = _db.VendingMachines
                                  .Include(m => m.Location)
                                  .Include(m => m.Status)                              
                                  .ToList();

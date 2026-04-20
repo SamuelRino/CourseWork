@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:CourseWork.Pages"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
             Title="Торговые автоматы">
@@ -17,41 +18,44 @@
         <TextBlock Text="Наполнение торговых автоматов" FontSize="24" FontWeight="Bold" Margin="10"/>
 
         <ListView x:Name="lvMachines" Grid.Row="1">
-            <ListView.ItemContainerStyle>
-                <Style TargetType="ListViewItem">
-                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                </Style>
-            </ListView.ItemContainerStyle>
 
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Серийный номер" Width="120" DisplayMemberBinding="{Binding VendingMachine}"/>
-                    <GridViewColumn Header="Модель" Width="150" DisplayMemberBinding="{Binding Model}"/>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderThickness="0,0,0,1" BorderBrush="LightGray">
+                        <Grid Margin="5" Width="2000">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="70"/>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
 
-                    <GridViewColumn Header="Адрес" Width="200">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Location.Address}"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
+                            <TextBlock Text="{Binding Machine.SerialNumber}" Grid.Column="0" VerticalAlignment="Center"/>
 
-                    <GridViewColumn Header="Статус" Width="100">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Status.Status}"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    <GridViewColumn x:Name="cIsDeleted" Header="Удалён" Width="0">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <CheckBox IsChecked="{Binding IsDeleted}" IsEnabled="False"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                </GridView>
-            </ListView.View>
+                            <ItemsControl ItemsSource="{Binding Data}" Grid.Column="1" VerticalAlignment="Center">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="100"/>
+                                                <ColumnDefinition Width="70"/>
+                                                <ColumnDefinition Width="100"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <TextBlock Text="{Binding Product.Name}" Grid.Column="0"/>
+                                            <TextBlock Text="{Binding Quantity, StringFormat='Кол-во: {0}'}" Grid.Column="1"/>
+                                            <TextBlock Text="{Binding MinLevel, StringFormat='Мин. кол-во: {0}'}" Grid.Column="2"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+
+                            <Button Click="btnRestock_Click" Grid.Column="2" Margin="3" Width="25" Padding="3" VerticalAlignment="Center" HorizontalAlignment="Left">
+                                <materialDesign:PackIcon Kind="ArchiveArrowDownOutline" VerticalAlignment="Center"/>
+                            </Button>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
         </ListView>
     </Grid>
 </Page>
