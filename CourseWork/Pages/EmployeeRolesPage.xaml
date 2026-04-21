@@ -1,4 +1,4 @@
-﻿<Page x:Class="CourseWork.Pages.MachinesPage"
+﻿<Page x:Class="CourseWork.Pages.EmployeeRolesPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -7,7 +7,7 @@
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="1200"
-      Title="Торговые автоматы">
+      Title="Роли сотрудников">
 
     <Grid Margin="10">
         <Grid.RowDefinitions>
@@ -16,13 +16,11 @@
         </Grid.RowDefinitions>
 
         <StackPanel Orientation="Horizontal" Margin="10">
-            <TextBlock Text="Торговые автоматы" FontSize="24" FontWeight="Bold"/>
+            <TextBlock Text="Должности сотрудников" FontSize="24" FontWeight="Bold"/>
             <Button x:Name="btnAdd" Content="Добавить" Margin="20,0,0,0" Width="100" Click="btnAdd_Click"/>
-            <Label Margin="20,0,0,0">Показ удалённых автоматов</Label>
-            <CheckBox x:Name="cbShowDeleted" VerticalAlignment="Center" IsChecked="False" Checked="cbShowDeleted_Checked" Unchecked="cbShowDeleted_Unchecked"/>
         </StackPanel>
 
-        <ListView x:Name="lvMachines" Grid.Row="1">
+        <ListView x:Name="lvRoles" Grid.Row="1">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalContentAlignment" Value="Center"/>
@@ -31,25 +29,8 @@
 
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="ID" Width="50" DisplayMemberBinding="{Binding MachineId}"/>
-                    <GridViewColumn Header="Серийный номер" Width="120" DisplayMemberBinding="{Binding SerialNumber}"/>
-                    <GridViewColumn Header="Модель" Width="150" DisplayMemberBinding="{Binding Model}"/>
-
-                    <GridViewColumn Header="Адрес" Width="200">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Location.Address}"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-
-                    <GridViewColumn Header="Статус" Width="150">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Status.Status}"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
+                    <GridViewColumn Header="ID" Width="50" DisplayMemberBinding="{Binding RoleId}"/>
+                    <GridViewColumn Header="Название должности" Width="400" DisplayMemberBinding="{Binding RoleName}"/>
 
                     <GridViewColumn Header="Действия" Width="120">
                         <GridViewColumn.CellTemplate>
@@ -65,17 +46,10 @@
                                     <Button x:Name="btnEdit" Click="btnEdit_Click">
                                         <materialDesign:PackIcon Kind="Edit" VerticalAlignment="Center"/>
                                     </Button>
-                                    <Button Click="btnDelete_Click">
+                                    <Button x:Name="btnDelete" Click="btnDelete_Click">
                                         <materialDesign:PackIcon Kind="TrashCanOutline" VerticalAlignment="Center"/>
                                     </Button>
                                 </StackPanel>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    <GridViewColumn x:Name="cIsDeleted" Header="Удалён" Width="0">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <CheckBox IsChecked="{Binding IsDeleted}" IsEnabled="False"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>

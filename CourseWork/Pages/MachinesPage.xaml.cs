@@ -67,17 +67,6 @@ namespace CourseWork.Pages
             }
         }
 
-        private void btnRestock_Click(object sender, RoutedEventArgs e)
-        {
-            var button = sender as Button;
-            var machine = button.DataContext as VendingMachine;
-
-            DataMachine.machine = machine;
-
-            RestockMachineWindow w = new();
-            w.ShowDialog();
-        }
-
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
             DataMachine.machine = null;

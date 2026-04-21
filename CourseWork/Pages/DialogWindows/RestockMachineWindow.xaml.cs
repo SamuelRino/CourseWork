@@ -26,13 +26,17 @@ namespace CourseWork.Pages.DialogWindows
         private VendingDbContext _db = new();
         public RestockMachineWindow()
         {
-            InitializeComponent();
-            cbEmployee.ItemsSource = _db.Employees.ToList();
-            cbEmployee.DisplayMemberPath = "FullName";
-            cbProduct.ItemsSource = _db.Products.ToList();
-            cbProduct.DisplayMemberPath = "Name";
+            InitializeComponent();           
 
             _machine = DataMachine.machine;
+
+            cbEmployee.ItemsSource = _db.Employees.ToList();
+            cbEmployee.DisplayMemberPath = "FullName";
+            cbProduct.ItemsSource = _db.MachineStocks
+                           .Where(s => s.MachineId == _machine.MachineId)
+                           .Select(s => s.Product)
+                           .ToList();
+            cbProduct.DisplayMemberPath = "Name";
         }
 
         private void btnExecute_Click(object sender, RoutedEventArgs e)

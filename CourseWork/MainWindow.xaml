@@ -33,9 +33,9 @@
                 <StackPanel>
                     <Button x:Name="btnToMachines" Content="Торговые автоматы" Margin="5" Click="btnToMachines_Click"/>
                     <Button x:Name="btnToMachineStosk" Content="Наполнение автомата" Margin="5" Click="btnToMachineStosk_Click"/>
-                    <Button Content="Продукты" Margin="5"/>
-                    <Button Content="Сотрудники" Margin="5"/>
-                    <Button Content="Локации" Margin="5"/>
+                    <Button x:Name="btnToProducts" Content="Продукты" Margin="5" Click="btnToProducts_Click" />
+                    <Button x:Name="btnToEmployees" Content="Сотрудники" Margin="5" Click="btnToEmployees_Click"/>
+                    <Button x:Name="btnToLocations" Content="Локации" Margin="5" Click="btnToLocations_Click"/>
                 </StackPanel>
             </Expander>
             
@@ -46,8 +46,8 @@
                     </Grid>
                 </Expander.Header>
                 <StackPanel>
-                    <Button Content="Категории продуктов" Margin="5"/>
-                    <Button Content="Роли сотрудников" Margin="5"/>
+                    <Button x:Name="btnToDictProductCategories" Content="Категории продуктов" Margin="5" Click="btnToDictProductCategories_Click"/>
+                    <Button x:Name="btnToDictEmployeeRoles" Content="Роли сотрудников" Margin="5" Click="btnToDictEmployeeRoles_Click"/>
                 </StackPanel>
             </Expander>
 
@@ -58,9 +58,9 @@
                     </Grid>
                 </Expander.Header>
                 <StackPanel>
-                    <Button Content="Продажи" Margin="5"/>
-                    <Button Content="Обслуживание" Margin="5"/>
-                    <Button Content="Пополнения" Margin="5"/>
+                    <Button x:Name="btnToOpSales" Content="Продажи" Margin="5" Click="btnToOpSales_Click"/>
+                    <Button x:Name="btnToOpMaintenance" Content="Обслуживание" Margin="5" Click="btnToOpMaintenance_Click"/>
+                    <Button x:Name="btnToOpRestocks" Content="Пополнения" Margin="5" Click="btnToOpRestocks_Click"/>
                 </StackPanel>
             </Expander>
 

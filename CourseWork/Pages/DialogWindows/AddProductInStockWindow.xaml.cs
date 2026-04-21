@@ -32,19 +32,42 @@ namespace CourseWork.Pages.DialogWindows
 
             _machine = DataMachine.machine;
 
-            _stock = new() { Machine = _machine, MachineId= _machine.MachineId };
+            _stock = new() { MachineId= _machine.MachineId };
 
             DataContext = _stock;
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show($"{_stock.MachineId}, {_stock.Machine}, {_stock.Product}, {_stock.MinLevel}");
+            if (cbProduct.SelectedItem != null)
+            {
+                try
+                {
+                    _stock.ProductId = ((Product)cbProduct.SelectedItem).ProductId;
+
+                    _stock.Product = null;
+                    _stock.Machine = null;
+
+                    _db.MachineStocks.Add(_stock);
+                    _db.SaveChanges();
+
+                    MessageBox.Show("Продукт успешно добавлен в инвентарь!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+                    this.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ошибка при сохранении: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Пожалуйста, выберите продукт.", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
-
+            Close();
         }
     }
 }

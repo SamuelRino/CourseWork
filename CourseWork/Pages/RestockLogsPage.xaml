@@ -1,0 +1,75 @@
+﻿<Page x:Class="CourseWork.Pages.RestockLogsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CourseWork.Pages"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="1200"
+      Title="Журнал пополнений">
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="10">
+            <TextBlock Text="Журнал пополнений" FontSize="24" FontWeight="Bold"/>
+            <Button x:Name="btnAdd" Content="Зарегистрировать" Margin="20,0,0,0" Width="170" Click="btnAdd_Click"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="10,0,10,10">
+            <Label Content="Период с:" VerticalAlignment="Center"/>
+            <DatePicker x:Name="dpStart" Width="120" Margin="5,0,15,0" SelectedDateChanged="Filter_Changed"/>
+            <Label Content="по:" VerticalAlignment="Center"/>
+            <DatePicker x:Name="dpEnd" Width="120" Margin="5,0,15,0" SelectedDateChanged="Filter_Changed"/>
+            <Label Content="Автомат:" VerticalAlignment="Center"/>
+            <ComboBox x:Name="cbMachineFilter" Width="150" Margin="5,0,15,0" SelectionChanged="Filter_Changed"/>
+            <Button x:Name="btnClear" Content="Сбросить фильтры" Width="140" Click="btnClear_Click" Background="Gray" BorderBrush="Gray"/>
+        </StackPanel>
+
+        <ListView x:Name="lvRestocks" Grid.Row="2">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="ID" Width="50" DisplayMemberBinding="{Binding RestockId}"/>
+                    <GridViewColumn Header="Дата и Время" Width="150" DisplayMemberBinding="{Binding RestockDate, StringFormat='{}{0:dd.MM.yyyy HH:mm}'}"/>
+
+                    <GridViewColumn Header="Автомат (Серийный №)" Width="180">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Machine.SerialNumber}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="Сотрудник" Width="180">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Employee.FullName}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="Продукт" Width="200">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Product.Name}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="Добавлено (шт.)" Width="120" DisplayMemberBinding="{Binding QuantityAdded}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Page>
