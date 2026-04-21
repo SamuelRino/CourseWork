@@ -49,9 +49,15 @@
                                 </ItemsControl.ItemTemplate>
                             </ItemsControl>
 
-                            <Button Click="btnRestock_Click" Grid.Column="2" Margin="3" Width="25" Padding="3" VerticalAlignment="Center" HorizontalAlignment="Left">
-                                <materialDesign:PackIcon Kind="ArchiveArrowDownOutline" VerticalAlignment="Center"/>
-                            </Button>
+                            <StackPanel Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Left" Orientation="Horizontal">
+                                <Button x:Name="btnAddProduct" Click="btnAddProduct_Click" Margin="3" Width="25" Padding="3">
+                                    <materialDesign:PackIcon Kind="Add" VerticalAlignment="Center"/>
+                                </Button>
+
+                                <Button x:Name="btnRestock" Click="btnRestock_Click" Margin="3" Width="25" Padding="3">
+                                    <materialDesign:PackIcon Kind="ArchiveArrowDownOutline" VerticalAlignment="Center"/>
+                                </Button>
+                            </StackPanel>
                         </Grid>
                     </Border>
                 </DataTemplate>

@@ -62,5 +62,18 @@ namespace CourseWork.Pages
 
             RefreshData();
         }
+
+        private void btnAddProduct_Click(object sender, RoutedEventArgs e)
+        {
+            var button = sender as Button;
+            dynamic stock = button.DataContext;
+
+            DataMachine.machine = stock.Machine;
+
+            AddProductInStockWindow w = new();
+            w.ShowDialog();
+
+            RefreshData();
+        }
     }
 }

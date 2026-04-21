@@ -22,7 +22,6 @@ namespace CourseWork.Pages.DialogWindows
     /// </summary>
     public partial class RestockMachineWindow : Window
     {
-        private RestockLog _restock;
         private VendingMachine _machine;
         private VendingDbContext _db = new();
         public RestockMachineWindow()
