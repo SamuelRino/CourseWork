@@ -1,0 +1,40 @@
+﻿<Page x:Class="CourseWork.Pages.RevenueByLocationPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CourseWork.Pages"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="1200" xml:lang="ru-RU"
+      Title="Отчёт: Выручка по локациям">
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Margin="10">
+            <TextBlock Text="Отчёт: Выручка по локациям" FontSize="24" FontWeight="Bold"/>
+            <Button x:Name="btnRefresh" Content="Обновить" Margin="20,0,0,0" Width="120" Click="btnRefresh_Click"/>
+        </StackPanel>
+
+        <ListView x:Name="lvRevenue" Grid.Row="1">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Адрес" Width="300" DisplayMemberBinding="{Binding Address}"/>
+                    <GridViewColumn Header="Здание" Width="200" DisplayMemberBinding="{Binding BuildingName}"/>
+                    <GridViewColumn Header="Продаж (кол-во)" Width="150" DisplayMemberBinding="{Binding SalesCount}"/>
+                    <GridViewColumn Header="Общая выручка" Width="180" DisplayMemberBinding="{Binding TotalRevenue, StringFormat={}{0:C}}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Page>

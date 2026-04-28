@@ -1,0 +1,41 @@
+﻿<Page x:Class="CourseWork.Pages.SalesByMachinePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CourseWork.Pages"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="1200" xml:lang="ru-RU"
+      Title="Отчёт: Продажи по автоматам">
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Margin="10">
+            <TextBlock Text="Отчёт: Продажи по автоматам" FontSize="24" FontWeight="Bold"/>
+            <Button x:Name="btnRefresh" Content="Обновить" Margin="20,0,0,0" Width="120" Click="btnRefresh_Click"/>
+        </StackPanel>
+
+        <ListView x:Name="lvSalesByMachine" Grid.Row="1">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Серийный номер" Width="180" DisplayMemberBinding="{Binding SerialNumber}"/>
+                    <GridViewColumn Header="Модель" Width="250" DisplayMemberBinding="{Binding Model}"/>
+                    <GridViewColumn Header="Кол-во продаж" Width="150" DisplayMemberBinding="{Binding TotalSales}"/>
+                    <GridViewColumn Header="Общая выручка" Width="180" DisplayMemberBinding="{Binding TotalRevenue, StringFormat={}{0:C}}"/>
+                    <GridViewColumn Header="Средний чек" Width="150" DisplayMemberBinding="{Binding AvgPrice, StringFormat={}{0:C}}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Page>

@@ -29,6 +29,13 @@ namespace CourseWork
         private readonly SalesPage salesPage = new();
         private readonly MaintenanceLogsPage maintenanceLogsPage = new();
         private readonly RestockLogsPage restockLogsPage = new();
+
+        private readonly EmployeeActivityPage employeeActivityPage = new();
+        private readonly LowStockPage lowStockPage = new();
+        private readonly RevenueByLocationPage revenueByLocationPage = new();
+        private readonly SalesByMachinePage salesByMachinePage = new();
+        private readonly StockFullInfoPage stockFullInfoPage = new();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -83,6 +90,31 @@ namespace CourseWork
         private void btnToOpRestocks_Click(object sender, RoutedEventArgs e)
         {
             fMainFrame.Navigate(restockLogsPage);
+        }
+
+        private void btnToVwEmployeeActivity_Click(object sender, RoutedEventArgs e)
+        {
+            fMainFrame.Navigate(employeeActivityPage);
+        }
+
+        private void btnToVwLowStock_Click(object sender, RoutedEventArgs e)
+        {
+            fMainFrame.Navigate(lowStockPage);
+        }
+
+        private void btnToVwRevenueByLocation_Click(object sender, RoutedEventArgs e)
+        {
+            fMainFrame.Navigate(revenueByLocationPage);
+        }
+
+        private void btnToVwSalesByMachine_Click(object sender, RoutedEventArgs e)
+        {
+            fMainFrame.Navigate(salesByMachinePage);
+        }
+
+        private void btnToVwStockFullInfo_Click(object sender, RoutedEventArgs e)
+        {
+            fMainFrame.Navigate(stockFullInfoPage);
         }
     }
 }

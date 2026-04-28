@@ -71,11 +71,11 @@
                     </Grid>
                 </Expander.Header>
                 <StackPanel>
-                    <Button Content="Активность сотрудников" Margin="5"/>
-                    <Button Content="Низкая наполненность" Margin="5"/>
-                    <Button Content="Выручка по локациям" Margin="5"/>
-                    <Button Content="Продажи по автоматам" Margin="5"/>
-                    <Button Content="Наполнение по автоматам" Margin="5"/>
+                    <Button x:Name="btnToVwEmployeeActivity" Content="Активность сотрудников" Margin="5" Click="btnToVwEmployeeActivity_Click"/>
+                    <Button x:Name="btnToVwLowStock" Content="Низкая наполненность" Margin="5" Click="btnToVwLowStock_Click"/>
+                    <Button x:Name="btnToVwRevenueByLocation" Content="Выручка по локациям" Margin="5" Click="btnToVwRevenueByLocation_Click"/>
+                    <Button x:Name="btnToVwSalesByMachine" Content="Продажи по автоматам" Margin="5" Click="btnToVwSalesByMachine_Click"/>
+                    <Button x:Name="btnToVwStockFullInfo" Content="Наполнение по автоматам" Margin="5" Click="btnToVwStockFullInfo_Click"/>
                 </StackPanel>
             </Expander>
         </Grid>

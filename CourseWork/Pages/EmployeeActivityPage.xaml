@@ -1,0 +1,42 @@
+﻿<Page x:Class="CourseWork.Pages.EmployeeActivityPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CourseWork.Pages"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="1200"
+      Title="Отчёт: Активность сотрудников">
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Margin="10">
+            <TextBlock Text="Отчёт: Активность сотрудников" FontSize="24" FontWeight="Bold"/>
+            <Button x:Name="btnRefresh" Content="Обновить" Margin="20,0,0,0" Width="120" Click="btnRefresh_Click"/>
+        </StackPanel>
+
+        <ListView x:Name="lvEmployeeActivity" Grid.Row="1">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="ID" Width="50" DisplayMemberBinding="{Binding EmployeeId}"/>
+                    <GridViewColumn Header="ФИО" Width="250" DisplayMemberBinding="{Binding FullName}"/>
+                    <GridViewColumn Header="Должность" Width="150" DisplayMemberBinding="{Binding RoleName}"/>
+                    <GridViewColumn Header="Пополнений (раз)" Width="150" DisplayMemberBinding="{Binding RestocksCount}"/>
+                    <GridViewColumn Header="Обслуживаний" Width="150" DisplayMemberBinding="{Binding MaintenancesCount}"/>
+                    <GridViewColumn Header="Загружено товаров (шт)" Width="180" DisplayMemberBinding="{Binding TotalItemsLoaded}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Page>
