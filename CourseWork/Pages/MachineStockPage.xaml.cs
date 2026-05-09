@@ -75,5 +75,10 @@ namespace CourseWork.Pages
 
             RefreshData();
         }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            RefreshData();
+        }
     }
 }

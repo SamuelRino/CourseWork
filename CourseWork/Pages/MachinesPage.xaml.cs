@@ -102,6 +102,11 @@ namespace CourseWork.Pages
             cIsDeleted.Width = 0;
             deletedVisibilty = false;
             RefreshData();
-        }      
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            RefreshData();
+        }
     }
 }

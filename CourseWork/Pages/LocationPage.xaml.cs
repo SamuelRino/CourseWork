@@ -72,5 +72,10 @@ namespace CourseWork.Pages
             w.ShowDialog();
             RefreshData();
         }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            RefreshData();
+        }
     }
 }
